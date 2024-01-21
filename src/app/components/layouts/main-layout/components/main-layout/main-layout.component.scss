@@ -1,0 +1,14 @@
+.main-content{
+    min-height: 100vh;
+    height: auto;
+}
+
+.sidenav-content{
+    width: 280px;
+}
+
+.navbar-position{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}

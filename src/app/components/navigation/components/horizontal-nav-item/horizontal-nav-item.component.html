@@ -1,0 +1,13 @@
+<button mat-menu-item
+[matMenuTriggerFor]="navItem.children.length > 0 ? navItemMenu : null" 
+routerLinkActive="active"
+[routerLinkActiveOptions]="{exact:true}"
+[routerLink]="navItem.children.length === 0 ? navItem.routeUrl : null"
+>
+    <mat-icon [svgIcon]="navItem.icon" class="mr-2"></mat-icon>   
+    {{navItem.name}}
+</button>
+
+<mat-menu #navItemMenu="matMenu">
+    <app-horizontal-nav-item *ngFor="let item of navItem.children" [navItem]="item"></app-horizontal-nav-item>
+</mat-menu>

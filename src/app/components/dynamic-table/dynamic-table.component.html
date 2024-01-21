@@ -1,0 +1,35 @@
+
+
+<div class="table-main">
+    <table *ngIf="tableHeaders.length > 0 && tableData.length > 0 else noData">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeaders" scope="col" class="pr-6 py-3">
+                    {{tableHeadersMap[header] ?? header}}
+                </th>
+                <th *ngIf="actions.length > 0" scope="col" class="pr-6 py-3">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr @SlidingAnimation *ngFor="let row of tableData">
+                <td scope="row" *ngFor="let header of tableHeaders">
+                    {{row[header]}}
+                </td>
+                <td class="d-flex items-center pr-6 py-4">
+                    <button (click)="onClickView(row)" *ngIf="actions.includes('delete')" class="circular-btn small mr-2 secondary">
+                        <mat-icon svgIcon="heroicons:eye"></mat-icon>   
+                    </button>
+                    <button (click)="onClickDelete(row)" *ngIf="actions.includes('view')" class="circular-btn small danger">
+                        <mat-icon svgIcon="heroicons:dollar"></mat-icon>   
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #noData>
+        No Data
+    </ng-template>
+</div>

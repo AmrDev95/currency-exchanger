@@ -1,0 +1,20 @@
+<mat-drawer-container>
+    <mat-drawer class="sidenav-content" mode="over" 
+    [opened]="_sideNavControl.sideNavToggled$"
+    (closed)="_sideNavControl.sideNavToggled$ = false">
+      <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+  
+    <div class="main-content d-flex flex-col">
+        <!-- navbar -->
+        <div class="navbar-position">
+            <app-navbar [navItems]="navItems"></app-navbar>
+        </div>
+        
+        <!-- main-content -->
+        <div class="grow mx-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+  
+</mat-drawer-container>

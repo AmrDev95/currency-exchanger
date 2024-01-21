@@ -1,0 +1,59 @@
+@import './color-palette.scss';
+
+.mat-mdc-menu-panel{
+    border-radius: 8px !important;
+    margin-top: 5px !important;
+}
+
+.mat-mdc-menu-content{
+    padding: 6px !important;
+}
+
+.mat-mdc-menu-item{
+    border-radius: 6px;
+    align-items: center;
+    padding: 7px !important;
+    margin-bottom: 3px !important;
+    height: 35px !important;
+    min-height: 35px !important;
+    span{
+        font-size: 14px !important;
+    }
+    .mat-icon{
+        transition: transform 0.2s ease-in-out;
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 14px !important;
+        margin-right: 6px !important;
+    }
+    img{
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.mat-mdc-menu-item:not(:disabled):hover, .mat-mdc-menu-item:not(:disabled).active{
+    background-color: $hover-color !important;
+    color: $primary-color !important;
+    .mat-mdc-menu-item-text{
+        animation: fontWeight 0.2s ease-in-out forwards !important;
+    }
+    .mat-icon{
+        color: $primary-color !important;
+        transform: scale(1.1) !important;
+    }
+
+    img{
+        transform: scale(1.1) !important;
+    }
+}
+
+
+
+@keyframes fontWeight {
+    from {
+      font-variation-settings: 'wght' 400;
+    }
+    to {
+      font-variation-settings: 'wght' 600;
+    }
+  }

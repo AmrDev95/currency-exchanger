@@ -1,0 +1,44 @@
+<div class="mt-6">
+    <h2>Convert Currency</h2>
+    <p>Convert from any currency to any currency</p>
+
+    <div class="pt-6">
+        <app-currency-converter 
+        (converted)="this.calculateConstantAmounts($event)"
+        (tableData)="getUpdatedTableData($event)"></app-currency-converter>
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 gap-4">
+        <div class="card bg-white p-5">
+            <h2 class="d-flex items-center">From 
+                <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
+                To
+            </h2>
+            <app-dynamic-table
+            [tableData]="fromToTableData"
+            ></app-dynamic-table>
+        </div>
+        <div class="card bg-white p-5">
+            <h2 class="d-flex items-center">To 
+                <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
+                From
+            </h2>
+            <app-dynamic-table
+            [tableData]="toFromTableData"
+            ></app-dynamic-table>
+        </div>
+    </div>
+
+    <div class="mt-6">
+        <div class="card bg-white p-5">
+            <h2>History</h2>
+            <app-dynamic-table 
+            [tableData]="tableData"
+            [tableHeadersMap]="tableMap"
+            [actions]="['delete', 'view']"
+            (onView)="goToEditPage($event)"
+            (onDelete)="openDeleteConfirmation($event)"
+            ></app-dynamic-table>
+        </div>
+    </div>
+</div>

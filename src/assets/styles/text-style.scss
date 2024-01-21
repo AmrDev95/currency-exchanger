@@ -1,0 +1,47 @@
+@import './color-palette.scss';
+
+body { 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+// text color
+
+.text-main{
+    color: $text-main;
+}
+
+.text-primary{
+    color: $primary-color;
+}
+
+
+
+//text size
+
+.text-lg{
+    font-size: 18px;
+}
+
+.text-2xl{
+    font-size: 35px !important;
+}
+
+
+.fw-bold{
+    font-weight: 500;
+}
+
+h2, header{
+    letter-spacing: -0.025em !important;
+    font-weight: 500 !important;
+    color: $black-color !important;
+    line-height: 1.2rem !important;
+    font-size: 20px !important;
+}
+
+p{
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: $text-main;
+    font-size: 16px !important;
+}
