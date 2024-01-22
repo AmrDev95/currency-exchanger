@@ -1,1 +1,44 @@
-<p>currency-conversion-details works!</p>
+<div class="mb-6">
+    <h2>Currencies Details</h2>
+    <p>This is the details component of the selected currencies</p>
+    
+    <div class="mt-6">
+        <app-currency-converter
+        [viewMode]="true"
+        ></app-currency-converter>
+    </div>
+
+    <div class="mt-6 card bg-white p-5">
+        <h2>Currencies Details</h2>
+        <p>This is the historical values of <b>{{fromCurrencyName}}</b> to <b>{{toCurrencyName}}</b></p>
+        <app-dynamic-table
+        [tableHeadersMap]="historicalRateMap"
+        [tableData]="historyRateTableData"
+        ></app-dynamic-table>
+    </div>
+
+
+    <div class="mt-6 grid grid-cols-2 gap-4">
+        <div class="card bg-white p-5 sm:col-span-1 col-span-2">
+            <h2 class="d-flex items-center">From 
+                <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
+                To
+            </h2>
+            <p>Conversion form <b>{{fromCurrencyName}}</b> to <b>predefined list of currencies</b></p>
+            <app-dynamic-table
+            [tableData]="fromToTable"
+            ></app-dynamic-table>
+        </div>
+
+        <div class="card bg-white p-5 sm:col-span-1 col-span-2">
+            <h2 class="d-flex items-center">From 
+                <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
+                To
+            </h2>
+            <p>Conversion from <b>predefined list of currencies</b> to <b>{{fromCurrencyName}}</b></p>
+            <app-dynamic-table
+            [tableData]="toFromTable"
+            ></app-dynamic-table>
+        </div>
+    </div>
+</div>

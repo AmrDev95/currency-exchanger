@@ -152,3 +152,12 @@
 .pr-10 { padding-right: 2.5rem; }
 .pb-10 { padding-bottom: 2.5rem; }
 .pl-10 { padding-left: 2.5rem; }
+
+
+
+
+@media (min-width: 768px) {
+    .md\:mb-0{
+        padding-bottom: 0px !important;
+    }
+}

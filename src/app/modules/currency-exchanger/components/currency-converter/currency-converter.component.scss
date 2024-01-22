@@ -5,5 +5,12 @@
 }
 
 .transform-btn{
-    transform: translateY(8px);
+    transform: translateY(0px);
+}
+
+
+@media (min-width: 768px) {
+    .transform-btn{
+        transform: translateY(8px);
+    }
 }

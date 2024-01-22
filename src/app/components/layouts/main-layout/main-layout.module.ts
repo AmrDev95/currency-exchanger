@@ -6,6 +6,8 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationModule } from '../../navigation/navigation.module';
 import { SidenavControlModule } from 'src/app/core/services/sidenav-control/sidenav-control.module';
+import { SplashScreenModule } from '../../splash-screen/splash-screen.module';
+import { LoadingBarModule } from 'src/app/core/services/loading-bar/loading-bar.module';
 
 
 
@@ -19,7 +21,9 @@ import { SidenavControlModule } from 'src/app/core/services/sidenav-control/side
     MainLayoutRoutingModule,
     NavigationModule,
     MatSidenavModule,
-    SidenavControlModule
+    SidenavControlModule,
+    SplashScreenModule,
+    LoadingBarModule
   ],
 
   exports: [

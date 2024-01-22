@@ -1,4 +1,4 @@
-<div class="mt-6">
+<div class="mb-6">
     <h2>Convert Currency</h2>
     <p>Convert from any currency to any currency</p>
 
@@ -9,7 +9,7 @@
     </div>
 
     <div class="mt-6 grid grid-cols-2 gap-4">
-        <div class="card bg-white p-5">
+        <div class="card bg-white p-5 sm:col-span-1 col-span-2">
             <h2 class="d-flex items-center">From 
                 <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
                 To
@@ -18,7 +18,7 @@
             [tableData]="fromToTableData"
             ></app-dynamic-table>
         </div>
-        <div class="card bg-white p-5">
+        <div class="card bg-white p-5 sm:col-span-1 col-span-2">
             <h2 class="d-flex items-center">To 
                 <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-2 text-primary icon-big"></mat-icon>
                 From
@@ -31,7 +31,7 @@
 
     <div class="mt-6">
         <div class="card bg-white p-5">
-            <h2>History</h2>
+            <h2>History (All of my conversions)</h2>
             <app-dynamic-table 
             [tableData]="tableData"
             [tableHeadersMap]="tableMap"

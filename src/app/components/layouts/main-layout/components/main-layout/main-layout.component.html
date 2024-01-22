@@ -1,20 +1,26 @@
-<mat-drawer-container>
-    <mat-drawer class="sidenav-content" mode="over" 
-    [opened]="_sideNavControl.sideNavToggled$"
-    (closed)="_sideNavControl.sideNavToggled$ = false">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-  
-    <div class="main-content d-flex flex-col">
-        <!-- navbar -->
-        <div class="navbar-position">
-            <app-navbar [navItems]="navItems"></app-navbar>
+<div class="w-screen h-screen overflow-hidden">
+    <mat-drawer-container class="w-full h-full">
+        <mat-drawer class="sidenav-content" mode="over" 
+        [opened]="_sideNavControl.sideNavToggled$"
+        (closed)="_sideNavControl.sideNavToggled$ = false">
+          <app-vertical-navigation [navigationItems]="navItems"></app-vertical-navigation>
+        </mat-drawer>
+      
+        <div class="main-content overflow-hidden d-flex flex-col">
+
+             <!-- loading bar -->
+             <app-loading-bar *ngIf="(_loadingService.isPageLoading) | async"></app-loading-bar>
+
+            <!-- navbar -->
+            <div class="navbar-position bg-light">
+                <app-navbar [navItems]="navItems"></app-navbar>
+            </div>
+            
+            <!-- main-content -->
+            <div class="grow ml-6 pr-6 overflow-y-auto">
+                <router-outlet></router-outlet>
+            </div>
         </div>
-        
-        <!-- main-content -->
-        <div class="grow mx-6">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-  
-</mat-drawer-container>
+      
+    </mat-drawer-container>
+</div>

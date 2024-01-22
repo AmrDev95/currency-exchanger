@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './core/services/loading-bar/loading.service';
 
 @Component({
   selector: 'app-root',

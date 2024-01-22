@@ -9,13 +9,18 @@ import { MainLayoutModule } from './components/layouts/main-layout/main-layout.m
 import { IconsModule } from './shared/icons/icons.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
-
+import { DatePipe } from '@angular/common';
+import { SplashScreenModule } from './components/splash-screen/splash-screen.module';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen/splash-screen.component';
+import { MatIconModule } from '@angular/material/icon';
+import { LoadingBarModule } from './core/services/loading-bar/loading-bar.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    SplashScreenComponent
   ],
 
   imports: [
@@ -24,7 +29,10 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
     BrowserAnimationsModule,
     MainLayoutModule,
     IconsModule,
-    HttpClientModule
+    HttpClientModule,
+    SplashScreenModule,
+    MatIconModule,
+    LoadingBarModule
   ],
 
   providers: [
@@ -32,7 +40,8 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    DatePipe
   ],
   
   bootstrap: [AppComponent]

@@ -22,7 +22,7 @@
                         <mat-icon svgIcon="heroicons:eye"></mat-icon>   
                     </button>
                     <button (click)="onClickDelete(row)" *ngIf="actions.includes('view')" class="circular-btn small danger">
-                        <mat-icon svgIcon="heroicons:dollar"></mat-icon>   
+                        <mat-icon svgIcon="heroicons:trash"></mat-icon>   
                     </button>
                 </td>
             </tr>
@@ -30,6 +30,9 @@
     </table>
 
     <ng-template #noData>
-        No Data
+        <div class="no-data py-5">
+            <mat-icon svgIcon="heroicons:dollar" class="no-data-icon bounce-animation text-primary"></mat-icon>
+            <p>No Data found</p>
+        </div>
     </ng-template>
 </div>

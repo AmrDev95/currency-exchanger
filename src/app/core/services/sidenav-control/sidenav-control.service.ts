@@ -28,8 +28,8 @@ export class SidenavControlService implements OnDestroy {
     );
   }
 
-  scheckMediaScreen(){
-    this._mediaScreenWatcher.watchMediaScreen(['XSmall', 'Small', 'Medium']).pipe(takeUntil(this.unsubscribe))
+  private scheckMediaScreen(){
+    this._mediaScreenWatcher.watchMediaScreen(['XSmall']).pipe(takeUntil(this.unsubscribe))
     .subscribe(
       (isMatched:boolean) => {
         if(!isMatched) this.sideNavToggled.next(false);

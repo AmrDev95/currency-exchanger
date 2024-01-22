@@ -1,6 +1,6 @@
 .main-content{
     min-height: 100vh;
-    height: auto;
+    height: 100%;
 }
 
 .sidenav-content{
@@ -11,4 +11,12 @@
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+.overflow-hidden{
+    overflow: hidden !important;
+}
+
+.overflow-y-auto{
+    overflow-y: auto !important;
 }

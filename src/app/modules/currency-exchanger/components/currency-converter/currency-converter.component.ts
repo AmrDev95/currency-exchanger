@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { IMappedCurrency } from '../../core/interfaces/mapped-currency.type';
 import { CurrencyExchangerService } from '../../core/services/currency-exchanger.service';
@@ -21,6 +21,7 @@ export class CurrencyConverterComponent implements OnInit, OnDestroy {
   fromName:string;
   toName:string;
 
+  @Input()viewMode:boolean = false;
   @Output()tableData:EventEmitter<ICurrencyListItem[]> = new EventEmitter<ICurrencyListItem[]>();
   @Output()converted:EventEmitter<{rate:number, from:string, to:string}> = new EventEmitter<{rate:number, from:string, to:string}>();
 
@@ -36,7 +37,25 @@ export class CurrencyConverterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.buildCurrencyConverterForm();
+    this.subscribeToRouteParams();
     this.subscribeToRouteData();
+  }
+
+  subscribeToRouteParams(){
+    this._activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(
+      (params:ParamMap) => {
+        if(params.get('currencyFrom') && params.get('currencyTo')){
+          this.currencyConverterForm.enable();
+          this.currencyConverterForm.patchValue({
+            from: params.get('currencyFrom'),
+            to: params.get('currencyTo'),
+            amount: 1
+          });
+          this.currencyConverterForm.get('from').disable();
+          this.convertCurrencies();
+        }
+      }
+    );
   }
 
   subscribeToRouteData(){
@@ -65,7 +84,9 @@ export class CurrencyConverterComponent implements OnInit, OnDestroy {
       this.currencyConverterForm.get('from').disable();
       this.currencyConverterForm.get('to').disable();
     } else{
-      this.currencyConverterForm.get('from').enable();
+      if(!this.viewMode){
+        this.currencyConverterForm.get('from').enable();
+      }
       this.currencyConverterForm.get('to').enable();
     }
   }
@@ -82,11 +103,14 @@ export class CurrencyConverterComponent implements OnInit, OnDestroy {
 
   convertCurrencies(){
     if(this.currencyConverterForm.invalid) return;
-    this._currencyExchangerService.convertCurrency(this.currencyConverterForm.value).pipe(takeUntil(this.unsubscribe))
+    this._currencyExchangerService.convertCurrency(this.currencyConverterForm.getRawValue()).pipe(takeUntil(this.unsubscribe))
     .subscribe(
       (convertedCurrency:IConversionResponse) => {
         this.convertedCurrency = JSON.parse(JSON.stringify(convertedCurrency));
-        this.addItemToHistoryTable();
+        if(!this.viewMode){
+          this.addItemToHistoryTable();
+        }
+
         this.converted.emit({
           from: this.currencyConverterForm.get('from').value,
           to:this.currencyConverterForm.get('to').value,
@@ -130,5 +154,4 @@ export class CurrencyConverterComponent implements OnInit, OnDestroy {
     this.unsubscribe.next(null);
     this.unsubscribe.complete();
   }
-
 }

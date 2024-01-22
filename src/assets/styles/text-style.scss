@@ -14,6 +14,10 @@ body {
     color: $primary-color;
 }
 
+.text-white{
+    color: $white-color !important;
+}
+
 
 
 //text size
@@ -35,7 +39,6 @@ h2, header{
     letter-spacing: -0.025em !important;
     font-weight: 500 !important;
     color: $black-color !important;
-    line-height: 1.2rem !important;
     font-size: 20px !important;
 }
 
@@ -44,4 +47,8 @@ p{
     letter-spacing: -0.01em;
     color: $text-main;
     font-size: 16px !important;
+}
+
+.line-height-35{
+    line-height: 35px !important;
 }

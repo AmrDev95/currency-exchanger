@@ -7,3 +7,10 @@ export const HistoryTableMap:any = {
     'toAmount' : 'To Amount',
     'rate' : 'Rate'
 }
+
+export const HistoricalRateMap:any = {
+    'from': 'Currency (From)',
+    'to' : 'Currency (To)',
+    'date' : 'Date',
+    'rate' : 'Rate'
+}

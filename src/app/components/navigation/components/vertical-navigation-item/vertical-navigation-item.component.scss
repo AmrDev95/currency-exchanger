@@ -1,0 +1,29 @@
+.vertical-nav-item{
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.vertical-nav-item:hover{
+    background-color: #f2f4f6;
+    color: #007dfc;
+}
+
+.vertical-nav-item.active{
+    color: #007dfc;
+}
+
+.chevron-down{
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(0deg);
+}
+
+.chevron-down.active{
+    transform: rotate(180deg);
+}
+
+.overflow-hidden{
+    overflow: hidden !important;
+}

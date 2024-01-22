@@ -1,0 +1,15 @@
+<div class="p-4">
+    <div class="d-flex items-center">
+        <img src="assets/images/logo.svg" class="logo" alt="">
+        <div class="text-main fw-bold text-lg m-0 p-0 ml-2">
+            <span>Currency </span>
+            <span class="text-primary">Exchanger</span>
+        </div>
+    </div>
+
+    <div class="flex flex-col mt-6">
+        <app-vertical-navigation-item *ngFor="let navItem of navigationItems"
+        [navItem]="navItem"
+        ></app-vertical-navigation-item>
+    </div>
+</div>

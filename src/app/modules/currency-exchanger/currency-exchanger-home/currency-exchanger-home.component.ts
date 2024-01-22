@@ -49,7 +49,6 @@ export class CurrencyExchangerHomeComponent implements OnInit {
   openDeleteConfirmation(event:ICurrencyListItem){
     let historyDetails = JSON.parse(localStorage.getItem('exchangeHistory')) as null | ICurrencyListItem[];
     if(historyDetails === null) return;
-    debugger;
 
     historyDetails = historyDetails.filter(history => history.id != event.id);
     localStorage.setItem('exchangeHistory', JSON.stringify(historyDetails));

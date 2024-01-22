@@ -1,7 +1,7 @@
 <div class="grid grid-cols-12 gap-4">
     
     <!-- currency converter card -->
-    <form [formGroup]="currencyConverterForm" class="bg-white p-4 card col-span-5" (submit)="convertCurrencies()">
+    <form [formGroup]="currencyConverterForm" class="bg-white p-4 card col-span-12 xl:col-span-7" (submit)="convertCurrencies()">
         <h2>Converter</h2>
 
         <!-- amount input -->
@@ -13,9 +13,9 @@
         </mat-form-field>
 
 
-        <div class="d-flex justify-between">
+        <div class="d-flex flex-col md:flex-row md:items-start items-center w-full">
             <!-- from currency -->
-            <div class="grow">
+            <div class="grow w-full">
                 <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Currency (from)</mat-label>
                     <mat-select disableRipple formControlName="from">
@@ -25,11 +25,11 @@
                   </mat-form-field>
             </div>
 
-              <button (click)="swapFromAndToCurrencies()" [disabled]="currencyConverterForm.get('amount').invalid" type="button" class="circular-btn mx-2 transform-btn">
+              <button (click)="swapFromAndToCurrencies()" [disabled]="currencyConverterForm.get('amount').invalid" type="button" class="circular-btn mx-2 transform-btn md:mb-0 mb-7">
                 <mat-icon svgIcon="heroicons:arrow-right-left"></mat-icon>   
               </button>
 
-              <div class="grow">
+              <div class="grow w-full">
                 <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Currency (to)</mat-label>
                     <mat-select disableRipple formControlName="to">
@@ -46,9 +46,9 @@
     </form>
 
     <!-- curency converter result -->
-    <div class="bg-white p-4 card col-span-7 d-flex flex-col pt-10 relative">
+    <div class="bg-white p-4 card col-span-12 xl:col-span-5 d-flex flex-col pt-10 relative">
         <div class="absolute top-15 right-15 p-2">
-            <button (click)="goToDetailsPage()" class="circular-btn">
+            <button [disabled]="!convertedCurrency" (click)="goToDetailsPage()" class="circular-btn">
                 <mat-icon svgIcon="heroicons:eye"></mat-icon>  
             </button>
         </div>
@@ -57,10 +57,10 @@
             <div *ngIf="convertedCurrency && convertedCurrency.result[currencyConverterForm.get('to').value] else noConversion" class="header d-flex items-center">
                 <span class="text-2xl">{{convertedCurrency.amount | number}} {{convertedCurrency.base}}</span>
                 <mat-icon svgIcon="heroicons:arrow-long-right" class="mx-4 text-primary icon-big"></mat-icon>  
-                <span class="text-2xl">{{convertedCurrency.result[currencyConverterForm.get('to').value]}} {{currencyConverterForm.get('to').value}}</span>
+                <span class="text-2xl">{{convertedCurrency.result[currencyConverterForm.get('to').value] | number}} {{currencyConverterForm.get('to').value}}</span>
             </div>
             <ng-template #noConversion>
-                <div class="header text-2xl">Please click on convert to see the output</div>
+                <div class="header text-2xl line-height-35">Please click on convert to see the output</div>
             </ng-template>
             <p class="mt-5">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit facilis, ratione beatae possimus ipsum minima ad ipsam mollitia inventore consectetur in minus animi quaerat. Mollitia rem tenetur facilis quam! Repudiandae.

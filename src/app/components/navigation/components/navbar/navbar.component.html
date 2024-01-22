@@ -1,4 +1,7 @@
 <div class="navbar bg-white">
+    <button (click)="toggleSideNav()" *ngIf="isVerticalNavigation" class="circular-btn mr-4">
+        <mat-icon svgIcon="heroicons:bars-3"></mat-icon>
+    </button>
     <div class="d-flex items-center">
         <img src="assets/images/logo.svg" class="logo" alt="">
         <div class="text-main fw-bold text-lg m-0 p-0 ml-2">
@@ -6,7 +9,7 @@
             <span class="text-primary">Exchanger</span>
         </div>
     </div>
-    <ng-container *ngFor="let navItem of navItems">
-        <app-horizontal-nav-item class="mx-3 ml-10" [navItem]="navItem"></app-horizontal-nav-item>
+    <ng-container *ngIf="!isVerticalNavigation">
+        <app-horizontal-nav-item *ngFor="let navItem of navItems" class="mx-3 ml-10" [navItem]="navItem"></app-horizontal-nav-item>
     </ng-container>
 </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { slidingAnimation } from 'src/app/animations/list.animation';
@@ -11,7 +11,7 @@ import { slidingAnimation } from 'src/app/animations/list.animation';
   styleUrls: ['./dynamic-table.component.scss'],
   animations: [slidingAnimation]
 })
-export class DynamicTableComponent<T> implements OnChanges, OnDestroy {
+export class DynamicTableComponent<T> implements OnChanges {
 
   @Input() tableData:T[] = [];
   @Input() tableHeadersMap:any = {};
@@ -43,11 +43,6 @@ export class DynamicTableComponent<T> implements OnChanges, OnDestroy {
 
   onClickDelete(row:T){
     this.onDelete.emit(row);
-  }
-
-
-  ngOnDestroy(): void {
-    
   }
 
 }

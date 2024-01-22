@@ -1,0 +1,13 @@
+<div [routerLink]="navItem.children.length === 0 ? navItem.routeUrl : null" routerLinkActive="active"
+(click)="checkAndToggle(navItem)" class="d-flex justify-between items-center vertical-nav-item p-3 px-2">
+    <div class="d-flex items-center">
+        <mat-icon [svgIcon]="navItem.icon" class="mr-2"></mat-icon> 
+        <span>{{navItem.name}}</span>
+    </div>
+
+    <mat-icon [class.active]="navItemToggled" *ngIf="navItem.children.length > 0" svgIcon="heroicons:chevron-down" class="mr-2 chevron-down"></mat-icon> 
+</div>
+
+<div [@ExpandCollapse] *ngIf="navItemToggled" class="pl-3 overflow-hidden my-2">
+    <app-vertical-navigation-item class="mb-3" *ngFor="let childItem of navItem.children" [navItem]="childItem"></app-vertical-navigation-item>
+</div>
